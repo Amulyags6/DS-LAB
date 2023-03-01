@@ -1,0 +1,41 @@
++#include <stdio.h>
+#include <stdlib.h>
+void BinarySearch(int arr[], int num, int first, int last)
+{
+ if(first > last)
+   {
+      printf("Number is not found");
+   } 
+   else 
+   {
+       int mid;
+      //calculate mid
+        mid = (first + last)/2;
+ 
+        //if value is found at mid position
+        if(arr[mid]==num)
+        {
+           printf("Element is found at index %d ",mid);
+            exit(0);
+         }
+        else if(arr[mid]>num)
+        {
+            //Recursive call
+            BinarySearch(arr, num, first, mid-1);
+       }
+        else
+        {
+            //Recursive call
+            BinarySearch(arr, num, mid+1, last);
+        }
+   }
+ }
+void main()
+{
+ int arr[] = {2,5,7,9,12,15,18};
+   int num,mid;
+   int first =0 , last = (sizeof(arr)/sizeof(arr[0]))-1;
+   printf("enter the key");
+   scanf("%d",&num);
+   BinarySearch(arr, num, first, last);
+}
